@@ -4,8 +4,9 @@ import collections
 conf = SparkConf().setMaster("local").setAppName("RatingsHistogram")
 sc = SparkContext(conf = conf)
 
-lines = sc.textFile("file:///SparkCourse/ml-100k/u.data")
+lines = sc.textFile("file:///Users/seanmerrifield/Documents/Programming/spark/ml-100k/u.data")
 ratings = lines.map(lambda x: x.split()[2])
+print(ratings)
 result = ratings.countByValue()
 
 sortedResults = collections.OrderedDict(sorted(result.items()))
